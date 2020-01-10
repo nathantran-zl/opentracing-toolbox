@@ -4,6 +4,8 @@ import io.opentracing.Tracer;
 import io.opentracing.mock.MockSpan;
 import io.opentracing.mock.MockTracer;
 import org.junit.jupiter.api.Test;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.plugin.AutoBaggage;
 
 import static com.google.common.collect.Iterables.getOnlyElement;
 import static org.junit.jupiter.api.Assertions.assertEquals;

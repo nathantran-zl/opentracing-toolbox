@@ -5,6 +5,8 @@ import io.opentracing.Span;
 import io.opentracing.Tracer;
 import io.opentracing.mock.MockTracer;
 import org.junit.jupiter.api.Test;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.plugin.TagPropagation;
 
 import java.util.Map;
 

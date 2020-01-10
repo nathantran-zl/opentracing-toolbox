@@ -7,11 +7,12 @@ import io.opentracing.Tracer;
 import io.opentracing.mock.MockSpan;
 import io.opentracing.mock.MockTracer;
 import org.junit.jupiter.api.Test;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
 
 import static com.google.common.collect.Iterables.getOnlyElement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.zalando.opentracing.proxy.Naming.naming;
+import static org.zalando.opentracing.proxy.intercept.name.Naming.naming;
 
 class ProxyScopeManagerTest {
 

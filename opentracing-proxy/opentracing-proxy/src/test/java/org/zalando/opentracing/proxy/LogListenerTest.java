@@ -4,6 +4,8 @@ import io.opentracing.Span;
 import io.opentracing.Tracer;
 import io.opentracing.mock.MockTracer;
 import org.junit.jupiter.api.Test;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.listen.log.LogListener;
 
 import java.util.Map;
 
@@ -29,7 +31,7 @@ class LogListenerTest {
         final Span span = unit.buildSpan("test").start()
                 .log("test");
 
-        verify(listener).onLog(span, "test");
+        verify(listener).onLog(span, singletonMap("event", "test"));
     }
 
     @Test
@@ -45,7 +47,7 @@ class LogListenerTest {
         final Span span = unit.buildSpan("test").start()
                 .log(0L, "test");
 
-        verify(listener).onLog(span, 0L, "test");
+        verify(listener).onLog(span, 0L, singletonMap("event", "test"));
     }
 
     @Test

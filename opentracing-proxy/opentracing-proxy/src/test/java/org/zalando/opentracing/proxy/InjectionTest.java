@@ -8,6 +8,8 @@ import io.opentracing.propagation.Format;
 import io.opentracing.propagation.TextMapAdapter;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.intercept.injection.Injection;
 
 import java.util.HashMap;
 import java.util.Map;

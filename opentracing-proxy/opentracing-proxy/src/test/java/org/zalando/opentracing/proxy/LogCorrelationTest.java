@@ -10,6 +10,8 @@ import io.opentracing.propagation.TextMapAdapter;
 import io.opentracing.propagation.TextMapExtractAdapter;
 import org.junit.jupiter.api.Test;
 import org.slf4j.MDC;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.plugin.LogCorrelation;
 
 import java.util.HashMap;
 

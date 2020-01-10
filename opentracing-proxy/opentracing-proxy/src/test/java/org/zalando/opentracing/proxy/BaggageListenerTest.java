@@ -5,10 +5,11 @@ import io.opentracing.Tracer;
 import io.opentracing.mock.MockTracer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.listen.baggage.BaggageListener;
 
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
-import static org.zalando.opentracing.proxy.BaggageListener.baggage;
 
 class BaggageListenerTest {
 
@@ -21,7 +22,7 @@ class BaggageListenerTest {
     });
 
     private final Tracer unit = new ProxyTracer(new MockTracer())
-            .with(baggage(listener));
+            .with(listener);
 
     @AfterEach
     void tearDown() {

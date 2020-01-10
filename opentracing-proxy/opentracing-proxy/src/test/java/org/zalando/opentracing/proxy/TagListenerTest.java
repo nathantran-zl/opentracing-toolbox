@@ -3,14 +3,18 @@ package org.zalando.opentracing.proxy;
 import io.opentracing.Span;
 import io.opentracing.Tracer;
 import io.opentracing.mock.MockTracer;
+import io.opentracing.tag.IntTag;
 import io.opentracing.tag.StringTag;
 import io.opentracing.tag.Tag;
 import org.junit.jupiter.api.Test;
 import org.mockito.invocation.InvocationOnMock;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.listen.tag.TagListener;
 
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 class TagListenerTest {
@@ -80,9 +84,21 @@ class TagListenerTest {
     @Test
     void shouldDelegateSpanTag() {
         final Span span = unit.buildSpan("test").start()
-                .setTag(new NumberTag("k4"), 17);
+                .setTag(new IntTag("k4"), 17);
 
         verify(listener).onTag(eq(span), tag("k4"), eq(17));
+    }
+
+    @Test
+    void multipleListenersAreChained() {
+        final Tracer unit = new ProxyTracer(new MockTracer())
+                .with(listener)
+                .with(listener);
+
+        final Tracer.SpanBuilder builder = unit.buildSpan("test")
+                .withTag("k1", "v");
+
+        verify(listener, times(2)).onTag(eq(builder), tag("k1"), eq("v"));
     }
 
     private static <T> Tag<T> tag(final String key) {

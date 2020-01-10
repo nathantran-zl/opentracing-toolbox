@@ -6,6 +6,8 @@ import io.opentracing.Tracer;
 import io.opentracing.mock.MockTracer;
 import org.junit.jupiter.api.Test;
 import org.mockito.invocation.InvocationOnMock;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.listen.scope.ScopeListener;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

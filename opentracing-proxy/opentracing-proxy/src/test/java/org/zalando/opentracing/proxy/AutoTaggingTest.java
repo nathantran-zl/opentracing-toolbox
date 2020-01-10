@@ -8,6 +8,8 @@ import io.opentracing.mock.MockSpan;
 import io.opentracing.mock.MockTracer;
 import io.opentracing.propagation.TextMapExtractAdapter;
 import org.junit.jupiter.api.Test;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.plugin.AutoTagging;
 
 import static com.google.common.collect.Iterables.getOnlyElement;
 import static io.opentracing.propagation.Format.Builtin.TEXT_MAP_EXTRACT;

@@ -7,6 +7,8 @@ import io.opentracing.mock.MockTracer;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.zalando.opentracing.proxy.core.ProxyTracer;
+import org.zalando.opentracing.proxy.intercept.name.Rename;
 
 import java.util.Arrays;
 
